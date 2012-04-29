@@ -19,17 +19,19 @@ namespace RestfulMVC
 
         public static Exception InvalidObjectForSerializer(string type)
         {
-            return new Exception();
+            return new Exception(RestfulContent.InvalidObjectTypeForSerializer + type);
         }
 
         public static Exception ObjectNotSerializable()
         {
-            return new Exception();
+            return new Exception(RestfulContent.ObjectNotSerializable);
         }
 
         public static Exception ResourceNotFound(string name)
         {
-            return new Exception();
+            return new Exception(string.Format(
+                RestfulContent.BucketResourceNotFound,
+                name));
         }
     }
 }

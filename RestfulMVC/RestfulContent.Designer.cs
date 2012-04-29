@@ -61,6 +61,15 @@ namespace RestfulMVC {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource {0} could not be resolved by the bucket.
+        /// </summary>
+        internal static string BucketResourceNotFound {
+            get {
+                return ResourceManager.GetString("BucketResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to application/{0}.
         /// </summary>
         internal static string ContentTypeApplication {
@@ -84,6 +93,24 @@ namespace RestfulMVC {
         internal static string Expect {
             get {
                 return ResourceManager.GetString("Expect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The serializer cannot use the object.
+        /// </summary>
+        internal static string InvalidObjectTypeForSerializer {
+            get {
+                return ResourceManager.GetString("InvalidObjectTypeForSerializer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The object is not serializable.
+        /// </summary>
+        internal static string ObjectNotSerializable {
+            get {
+                return ResourceManager.GetString("ObjectNotSerializable", resourceCulture);
             }
         }
         

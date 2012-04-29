@@ -12,6 +12,7 @@ namespace RestfulMVC.Serializer
         public object Deserialize(Stream stream, Type type)
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(type);
+            stream.Position = 0;
             return serializer.ReadObject(stream); 
         }
 

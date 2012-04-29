@@ -12,7 +12,7 @@ namespace RestfulMVC.Serializer
         {
             System.Xml.Serialization.XmlSerializer serializer =
                 new System.Xml.Serialization.XmlSerializer(type);
-
+            stream.Position = 0;
             return serializer.Deserialize(stream);
         }
 

@@ -29,6 +29,20 @@ namespace RestfulMVC.ActionResult
 
             response.StatusCode = (int)statusCode;
             
+            //Alternate response type passed in the url by the client
+            string alt = context.RouteData.Values["alt"] as string;    
+            if (!string.IsNullOrEmpty(alt))
+            {
+                if (alt.ToLower().Contains("xml"))
+                {
+                    contentType = ContentTypes.Xml;
+                }
+                else if (alt.ToLower().Contains("json"))
+                {
+                    contentType = ContentTypes.Json;
+                }
+            }
+
             if (contentType != ContentTypes.Null)
             {
                 response.ContentType = string.Format(
