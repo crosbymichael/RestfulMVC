@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+namespace RestfulMVC.Serializer
+{
+    class XmlSerializer : IRestfulSerializer, IBucketResource
+    {
+        public object Deserialize(System.IO.Stream stream, Type type)
+        {
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(type);
+
+            return serializer.Deserialize(stream);
+        }
+
+        public System.IO.MemoryStream Serialize(object data)
+        {
+            Type type = data.GetType();
+
+            if (!type.IsSerializable)
+            {
+                throw Errors.ObjectNotSerializable();
+            }
+
+            System.Xml.Serialization.XmlSerializer serializer =
+                new System.Xml.Serialization.XmlSerializer(data.GetType());
+
+            MemoryStream stream = new MemoryStream();
+            serializer.Serialize(stream, data);
+            return stream;
+        }
+
+        public void Dispose()
+        {
+            
+        }
+
+        public bool IsReusable
+        {
+            get { return true; }
+        }
+    }
+}
